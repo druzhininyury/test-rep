@@ -1,10 +1,7 @@
 package ru.yandex.practicum.demo;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/test")
@@ -14,6 +11,12 @@ public class TestController {
     @ResponseStatus(HttpStatus.OK)
     public TestDto getGreeting() {
         return new TestDto("Hello user!");
+    }
+
+    @GetMapping("/{word}")
+    @ResponseStatus(HttpStatus.OK)
+    public TestDto getEcho(@PathVariable String word) {
+        return new TestDto(word);
     }
 
 }
