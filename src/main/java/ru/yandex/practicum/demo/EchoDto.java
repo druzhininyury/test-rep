@@ -5,12 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class TestDto {
+public class EchoDto {
 
-    private String greeting;
+    private Long id;
+
+    private String message;
+
+    private LocalDateTime createdOn;
 
 }
