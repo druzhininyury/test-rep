@@ -40,4 +40,25 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: ya-workshop-test-service.tar
-          target: ~/deploy/
+          target: ~/deploy/test-service/
+
+      - name: Transfer docker-compose.yml to Server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: docker-compose.yml
+          target: ~/deploy/test-service/
+
+      - name: Deploy on Server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            cd ~/deploy/test-service/
+            docker load -i ya-workshop-test-service.tar
+            docker-compose down
+            docker-compose up -d
