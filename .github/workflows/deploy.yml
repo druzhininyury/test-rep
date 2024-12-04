@@ -30,6 +30,7 @@ jobs:
       - name: Save Docker Image to File
         run: |
           docker save ya-workshop-test-service -o ya-workshop-test-service.tar
+          chmod 644 ya-workshop-test-service.tar
           ls -lah ya-workshop-test-service.tar
 
       - name: Transfer Docker image to server
