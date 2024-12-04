@@ -19,8 +19,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'  # Используем Temurin как JDK (можно также использовать AdoptOpenJDK)
-          java-version: '17'        # Версия JDK (используйте подходящую версию для вашего проекта)
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Build and Test with Maven
         run: mvn clean install
