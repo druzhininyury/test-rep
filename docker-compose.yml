@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  user-service:
+    build: .
+    image: ya-workshop-test-service
+    container_name: test-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - test-service-database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://user-service-database:5432/testservicedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+
+  test-service-database:
+    image: postgres:14-alpine
+    container_name: test-service-database
+    environment:
+      - POSTGRES_DB=testservicedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
