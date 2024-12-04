@@ -28,7 +28,9 @@ jobs:
         run: docker build -t ya-workshop-test-service .
 
       - name: Save Docker Image to File
-        run: docker save ya-workshop-test-service -o ya-workshop-test-service.tar
+        run: |
+          docker save ya-workshop-test-service -o ya-workshop-test-service.tar
+          ls -lah ya-workshop-test-service.tar
 
       - name: Transfer Docker image to server
         uses: appleboy/scp-action@v0.1.7
