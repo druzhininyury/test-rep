@@ -33,6 +33,10 @@ jobs:
           chmod 644 ya-workshop-test-service.tar
           ls -lah ya-workshop-test-service.tar
 
+      - name: Check files exist
+        run: |
+          ls -l ya-workshop-test-service.tar docker-compose.yml
+
       - name: Transfer Docker image to server
         uses: appleboy/scp-action@v0.1.7
         with:
