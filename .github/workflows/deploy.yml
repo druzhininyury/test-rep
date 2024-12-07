@@ -55,5 +55,5 @@ jobs:
           script: |
             cd ~/deploy/test-service/
             docker load -i ya-workshop-test-service.tar
-            docker-compose down
-            docker-compose up -d
+            docker compose down
+            docker compose up -d
