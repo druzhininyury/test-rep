@@ -39,16 +39,9 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
-          source: ya-workshop-test-service.tar
-          target: ~/deploy/test-service/
-
-      - name: Transfer docker-compose.yml to Server
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          source: docker-compose.yml
+          source: |
+            ya-workshop-test-service.tar
+            docker-compose.yml
           target: ~/deploy/test-service/
 
       - name: Deploy on Server
